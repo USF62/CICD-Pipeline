@@ -12,7 +12,7 @@ func horoscope(month string, day int) string {
 	if month == "january" {
 		if day >= 1 && day <= 19 {
 			horoscope = "Capricorn"
-		} else if day >= 20 && day <= 30 {
+		} else if day >= 20 && day <= 31 {
 			horoscope = "Aquarius"
 		}
 	} else if month == "february" {
