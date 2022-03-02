@@ -8,8 +8,14 @@ import (
 )
 
 
-func createDate(year, month, date int) time.Time {
+func formatDate(year, month, date int) time.Time {
 	return time.Date(year,time.Month(month), date, 0,0,0,0, time.UTC)
+}
+
+func CheckError( e error){
+	if e != nil{
+		fmt.Println(e)
+	}
 }
 
 
@@ -18,47 +24,28 @@ func calculateDaysToBday(bDay string){
   year, error := strconv.Atoi(splitBirthDay[0])
   month, error := strconv.Atoi(splitBirthDay[1])
   day, error := strconv.Atoi(splitBirthDay[2])
-
-  if(error != nil){
-    return
-  }
+  CheckError(error)
 	
-	birthDate := createDate(year, month, day) //This creates a Date with user inputted BirthDay
-	now := time.Now()  //Current Time
-
-	if birthDate.Month() == now.Month() {
-
-		if birthDate.Day() < now.Day() { //Upcoming birthday next year
-
-			fmt.Println("Your next birthday is next year!")
-                	bDayYear := int(now.Year()) +1
-                	nextBirthDay := createDate(bDayYear, int(birthDate.Month()), int(birthDate.Day()))
-              	 	daysToBday := nextBirthDay.Sub(now).Hours()/24
-                	fmt.Printf("You have around %.2f days until your birthday.\n", daysToBday)
-
-		} else { //Upcoming birthday in the same month, same year
-
-			fmt.Println("Your next birthday is this year!")
-        		nextBirthDay := createDate(int(now.Year()), int(birthDate.Month()), int(birthDate.Day()))
-        		daysToBday := nextBirthDay.Sub(now).Hours()/24
-        		fmt.Printf("You have around %.2f days until your birthday.\n", daysToBday)
+	birthDate := formatDate(year, month, day) //This creates a Date with user inputted BirthDay
+	loc, error :=  time.LoadLocation("America/Los_Angeles")
+	CheckError(error)
+	now := time.Now().UTC().In(loc) 
+	
+	if ((birthDate.Month() == now.Month() && birthDate.Day() >= now.Day() ) || (birthDate.Month() > now.Month())){
+		if(birthDate.Day() == now.Day()){
+			fmt.Println("Today is your birthday. Happy Birthday!")
+			return
 		}
-
-	} else if birthDate.Month() < now.Month() { //Upcoming birthday next year
-
-		fmt.Println("Your next birthday is next year!")
-		dyear := int(now.Year()) +1
-		nextBirthDay := createDate(dyear, int(birthDate.Month()), int(birthDate.Day()))
-	  daysToBday := nextBirthDay.Sub(now).Hours()/24
-		fmt.Printf("You have around %.2f days until your birthday.\n", daysToBday)
-
-	} else { //Upcoming birthday in the same year
-
 		fmt.Println("Your next birthday is this year!")
-		nextBirthDay := createDate(int(now.Year()), int(birthDate.Month()), int(birthDate.Day()))
+	  nextBirthDay := formatDate(int(now.Year()), int(birthDate.Month()), int(birthDate.Day()))
+	  daysToBday := nextBirthDay.Sub(now).Hours()/24
+	  fmt.Printf("You have around %.2f days until your birthday.\n", daysToBday)
+	} else if ((birthDate.Month() == now.Month() && birthDate.Day() < now.Day() ) || (birthDate.Month() < now.Month())){
+		fmt.Println("Your next birthday is next year!")
+		bDayYear := int(now.Year()) +1
+		nextBirthDay := formatDate(bDayYear, int(birthDate.Month()), int(birthDate.Day()))
 		daysToBday := nextBirthDay.Sub(now).Hours()/24
 		fmt.Printf("You have around %.2f days until your birthday.\n", daysToBday)
-
 	}
 }
 
