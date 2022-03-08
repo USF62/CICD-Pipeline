@@ -17,7 +17,7 @@ func calculation (month, day, year, monthBirth, dayBirth, yearBirth int) (int, i
 
 	dayDiff := day - dayBirth
 	if dayDiff < 0 {
-		dayDiff += (32 - dayDiff)
+		dayDiff += 32
 		monthDiff--
 	}
 
@@ -40,6 +40,7 @@ func handleInput(s, sep string) []string {
 	}
 	return final
 }
+
 
 func main() {
 	fmt.Println("enter date of birth (MM/DD/YYYY): ")
