@@ -8,7 +8,7 @@ func TestHoroscope(t *testing.T) {
 	}
 }
 
-func TestTableCalculate(t *testing.T) {
+func TestTableHoroscope(t *testing.T) {
 	var tests = []struct {
 		inputID    int
 		inputMonth int
@@ -43,7 +43,55 @@ func TestTableCalculate(t *testing.T) {
 	}
 	for _, test := range tests {
 		if output := getHoroscope(test.inputMonth, test.inputDay); output != test.expected {
-			t.Errorf("Test Failed: %d, expected: %q, received: %q", test.inputID, test.expected, output)
+			t.Errorf("Test Failed: %d, Expected: %q, Received: %q", test.inputID, test.expected, output)
+		}
+	}
+}
+
+func TestZodiac(t *testing.T) {
+	if getZodiac(2, 3, 2000) != "Rabbit" {
+		t.Errorf("Expected Rabbit")
+	}
+}
+
+func TestTableZodiac(t *testing.T) {
+	var tests = []struct {
+		inputID    int
+		inputMonth int
+		inputDay   int
+		inputYear  int
+		expected   string
+	}{
+		{1, 2, 3, 2000, "Rabbit"},
+		{2, 2, 4, 2000, "Dragon"},
+		{3, 2, 3, 2001, "Dragon"},
+		{4, 2, 4, 2001, "Snake"},
+		{5, 2, 3, 2002, "Snake"},
+		{6, 2, 4, 2002, "Horse"},
+		{7, 2, 3, 2003, "Horse"},
+		{8, 2, 4, 2003, "Sheep"},
+		{9, 2, 3, 2004, "Sheep"},
+		{10, 2, 4, 2004, "Monkey"},
+		{11, 2, 3, 2005, "Monkey"},
+		{12, 2, 4, 2005, "Rooster"},
+		{13, 2, 3, 2006, "Rooster"},
+		{14, 2, 4, 2006, "Dog"},
+		{15, 2, 3, 2007, "Dog"},
+		{16, 2, 4, 2007, "Pig"},
+		{17, 2, 3, 2008, "Pig"},
+		{18, 2, 4, 2008, "Rat"},
+		{19, 2, 3, 2009, "Rat"},
+		{20, 2, 4, 2009, "Ox"},
+		{21, 2, 3, 2010, "Ox"},
+		{22, 2, 4, 2010, "Tiger"},
+		{23, 2, 3, 2011, "Tiger"},
+		{24, 2, 4, 2011, "Rabbit"},
+		{25, 2, 3, 2012, "Rabbit"},
+		{26, 2, 4, 2012, "Dragon"},
+	}
+	for _, test := range tests {
+		if output := getZodiac(test.inputMonth, test.inputDay, test.inputYear); output != test.expected {
+			t.Errorf("Test Failed: %d, Expected: %q, Received: %q", test.inputID, test.expected, output)
 		}
 	}
 }
