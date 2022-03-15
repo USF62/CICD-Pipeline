@@ -1,4 +1,4 @@
-package main
+package DaysToBday
 
 import (
 	"fmt"
@@ -19,15 +19,21 @@ func CheckError(e error) {
 		fmt.Println(e)
 	}
 }
-
-func calculateDaysToBday(bDay string) {
+func splitBday(bDay string) time.Time {
 	splitBirthDay := strings.Split(bDay, "/")
 	month, error := strconv.Atoi(splitBirthDay[0])
+	CheckError(error)
 	day, error := strconv.Atoi(splitBirthDay[1])
+	CheckError(error)
 	year, error := strconv.Atoi(splitBirthDay[2])
 	CheckError(error)
 
-	birthDate := formatDate(year, month, day) //This creates a Date with user inputted BirthDay
+	birthDate := formatDate(year, month, day)
+	return birthDate
+}
+
+func calculateDaysToBday(birthDate time.Time) int {
+	daysToBD := 0
 	loc, error := time.LoadLocation("America/Los_Angeles")
 	CheckError(error)
 	now := time.Now().UTC().In(loc)
@@ -35,7 +41,7 @@ func calculateDaysToBday(bDay string) {
 	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {
 		if birthDate.Day() == now.Day() {
 			fmt.Println("Today is your birthday. Happy Birthday!")
-			return
+			return 0
 		}
 		fmt.Println("Your next birthday is this year!")
 		nextBD := formatDate(int(now.Year()), int(birthDate.Month()), int(birthDate.Day()))
@@ -48,12 +54,15 @@ func calculateDaysToBday(bDay string) {
 		daysToBD := math.Ceil(nextBD.Sub(now).Hours() / 24)
 		fmt.Printf("You have around %.0f days until your birthday.\n", daysToBD)
 	}
+	return daysToBD
 }
 
+/*
 func main() {
 	fmt.Println("Hi, Please input your birthday in the following format in numbers:\nmonth/date/year  Ex: 03/24/2000")
 	var bDay string
 	fmt.Scanln(&bDay)
 
-	calculateDaysToBday(bDay)
-}
+	birthDate := splitBday(bDay)
+	calculateDaysToBday(birthDate)
+}*/
