@@ -9,26 +9,12 @@ var zodiac = []string{"Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox",
 /* Returns horoscope sign based on the given birthday.
  * Assumes given inputs are positive. */
 func getHoroscope(month int, day int) string {
-	if month == 1 || month == 4 {
-		if day <= 19 {
-			return horoscope[month-1]
-		}
-	} else if month == 2 {
-		if day <= 18 {
-			return horoscope[month-1]
-		}
-	} else if month == 3 || month == 5 || month == 6 {
-		if day <= 20 {
-			return horoscope[month-1]
-		}
-	} else if month == 11 || month == 12 {
-		if day <= 21 {
-			return horoscope[month-1]
-		}
-	} else if month >= 7 && month <= 10 {
-		if day <= 22 {
-			return horoscope[month-1]
-		}
+	if (month == 1 || month == 4) && day <= 19 ||
+		(month == 2 && day <= 18) ||
+		(month == 3 || month == 5 || month == 6) && day <= 20 ||
+		((month == 11 || month == 12) && day <= 21) ||
+		(month >= 7 && month <= 10) && day <= 22 {
+		return horoscope[month-1]
 	}
 	if month == 12 {
 		return horoscope[0]
