@@ -1,4 +1,4 @@
-package main
+package DaysToBday
 
 import (
 	"fmt"
@@ -15,7 +15,7 @@ func assertEqual(t *testing.T, a interface{}, b interface{}, message string) {
 	}
 	t.Fatal(message)
 }
-func testUpcomingBirthdaySameYear(t *testing.T) {
+func TestUpcomingBirthdaySameYear(t *testing.T) {
 	loc, error := time.LoadLocation("America/Los_Angeles")
 	CheckError(error)
 	now := time.Now().UTC().In(loc)
@@ -24,7 +24,7 @@ func testUpcomingBirthdaySameYear(t *testing.T) {
 	assertEqual(t, result, 4, "")
 }
 
-func testUpcomingBirthdayNextYear(t *testing.T) {
+func TestUpcomingBirthdayNextYear(t *testing.T) {
 	loc, error := time.LoadLocation("America/Los_Angeles")
 	CheckError(error)
 	now := time.Now().UTC().In(loc)
