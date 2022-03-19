@@ -16,7 +16,7 @@ func Calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, in
 
 	dayDiff := day - dayBirth
 	if dayDiff < 0 {
-		dayDiff += (32 - dayDiff)
+		dayDiff += 32 - dayDiff
 		monthDiff--
 	}
 

@@ -13,7 +13,7 @@ func main() {
 	var birthDate string
 	fmt.Scanln(&birthDate)
 
-	test := calculate.HandleInput(todayDate, "/")
+	test := timecalculator.HandleInput(todayDate, "/")
 	month, _ := strconv.Atoi(test[0])
 	day, _ := strconv.Atoi(test[1])
 	year, _ := strconv.Atoi(test[2])
@@ -23,7 +23,7 @@ func main() {
 	dayBirth, _ := strconv.Atoi(test[1])
 	yearBirth, _ := strconv.Atoi(test[2])
 
-	monthDiff, dayDiff, yearDiff := calculate.Calculation(month, day, year, monthBirth, dayBirth, yearBirth)
+	monthDiff, dayDiff, yearDiff := timecalculator.Calculation(month, day, year, monthBirth, dayBirth, yearBirth)
 
 	fmt.Printf("You are %d years, %d months, %d days old.", yearDiff, monthDiff, dayDiff)
 
