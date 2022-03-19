@@ -33,7 +33,6 @@ func splitBday(bDay string) time.Time {
 }
 
 func calculateDaysToBday(birthDate time.Time) int {
-	daysToBD := 0
 	loc, error := time.LoadLocation("America/Los_Angeles")
 	CheckError(error)
 	now := time.Now().UTC().In(loc)
@@ -47,22 +46,15 @@ func calculateDaysToBday(birthDate time.Time) int {
 		nextBD := formatDate(int(now.Year()), int(birthDate.Month()), int(birthDate.Day()))
 		daysToBD := math.Ceil(nextBD.Sub(now).Hours() / 24)
 		fmt.Printf("You have around %.0f days until your birthday.\n", daysToBD)
+		return int(daysToBD)
+
 	} else if (birthDate.Month() == now.Month() && birthDate.Day() < now.Day()) || (birthDate.Month() < now.Month()) {
 		fmt.Println("Your next birthday is next year!")
 		yearBD := int(now.Year()) + 1
 		nextBD := formatDate(yearBD, int(birthDate.Month()), int(birthDate.Day()))
 		daysToBD := math.Ceil(nextBD.Sub(now).Hours() / 24)
 		fmt.Printf("You have around %.0f days until your birthday.\n", daysToBD)
+		return int(daysToBD)
 	}
-	return daysToBD
+	return 0
 }
-
-/*
-func main() {
-	fmt.Println("Hi, Please input your birthday in the following format in numbers:\nmonth/date/year  Ex: 03/24/2000")
-	var bDay string
-	fmt.Scanln(&bDay)
-
-	birthDate := splitBday(bDay)
-	calculateDaysToBday(birthDate)
-}*/

@@ -1,10 +1,18 @@
-package main
+package DaysToBday
 
 import (
 	"fmt"
 	"testing"
 	"time"
 )
+
+func getDateFromTime(days int) time.Time {
+	loc, error := time.LoadLocation("America/Los_Angeles")
+	CheckError(error)
+	now := time.Now().UTC().In(loc)
+	date := now.AddDate(0, 0, days)
+	return date
+}
 
 func assertEqual(t *testing.T, a interface{}, b interface{}, message string) {
 	if a == b {
@@ -15,20 +23,20 @@ func assertEqual(t *testing.T, a interface{}, b interface{}, message string) {
 	}
 	t.Fatal(message)
 }
-func testUpcomingBirthdaySameYear(t *testing.T) {
-	loc, error := time.LoadLocation("America/Los_Angeles")
-	CheckError(error)
-	now := time.Now().UTC().In(loc)
-	future := now.AddDate(0, 0, 4)
-	result := calculateDaysToBday(future)
-	assertEqual(t, result, 4, "")
+func TestUpcomingBirthdaySameYear(t *testing.T) {
+	sameYearBday := getDateFromTime(4)
+	result := calculateDaysToBday(sameYearBday)
+	assertEqual(t, result, 4, "The outputted result does not match the expected result.")
 }
 
-func testUpcomingBirthdayNextYear(t *testing.T) {
-	loc, error := time.LoadLocation("America/Los_Angeles")
-	CheckError(error)
-	now := time.Now().UTC().In(loc)
-	future := now.AddDate(0, 0, -4)
-	result := calculateDaysToBday(future)
-	assertEqual(t, result, -4, "")
+func TestUpcomingBirthdayNextYear(t *testing.T) {
+	nextYearBday := getDateFromTime(-4)
+	result := calculateDaysToBday(nextYearBday)
+	assertEqual(t, result, 361, "The outputted result does not match the expected result.")
+}
+
+func TestBirthdayToday(t *testing.T) {
+	today := getDateFromTime(0)
+	result := calculateDaysToBday(today)
+	assertEqual(t, result, 0, "The outputted result does not match the expected result.")
 }
