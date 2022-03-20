@@ -7,9 +7,7 @@ import (
 )
 
 func getDateFromTime(days int) time.Time {
-	loc, error := time.LoadLocation("America/Los_Angeles")
-	CheckError(error)
-	now := time.Now().UTC().In(loc)
+	now := getLocalTime()
 	date := now.AddDate(0, 0, days)
 	return date
 }
@@ -23,6 +21,7 @@ func assertEqual(t *testing.T, a interface{}, b interface{}, message string) {
 	}
 	t.Fatal(message)
 }
+
 func TestUpcomingBirthdaySameYear(t *testing.T) {
 	sameYearBday := getDateFromTime(4)
 	result := calculateDaysToBday(sameYearBday)
