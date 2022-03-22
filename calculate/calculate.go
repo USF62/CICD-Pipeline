@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, int, int) {
+func Calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, int, int) {
 	yearDiff := year - yearBirth
 
 	monthDiff := month - monthBirth
@@ -24,7 +24,7 @@ func calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, in
 
 }
 
-func handleInput(s, sep string) []string {
+func HandleInput(s, sep string) []string {
 	repeat := true
 	var final []string
 
