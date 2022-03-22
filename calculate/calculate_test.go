@@ -18,6 +18,6 @@ func TestCalc(t *testing.T) {
 	if monthTest == 6 && dayTest == 9 && yearTest == 22 {
 		return
 	} else {
-		t.Errorf("Error!")
+		t.Fatal("Error! Calculated return and actual does not match up!")
 	}
 }
