@@ -32,10 +32,10 @@ func Calculation(today, birthday time.Time) (int, int, int) {
 		month--
 	}
 
-    if month < 0 {
-        month += 12
-        year--
-    }
+	if month < 0 {
+ 		month += 12
+		year--
+	}
 
 	return year, month, day
 }
