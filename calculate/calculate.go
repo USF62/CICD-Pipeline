@@ -1,41 +1,41 @@
 package calculate
 
 import (
+	"time"
 	"fmt"
-	"strings"
 )
 
-func Calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, int, int) {
-	yearDiff := year - yearBirth
-
-	monthDiff := month - monthBirth
-	if monthDiff < 0 {
-		monthDiff += 12
-		yearDiff--
-	}
-
-	dayDiff := day - dayBirth
-	if dayDiff < 0 {
-		dayDiff += 32 - dayDiff
-		monthDiff--
-	}
-
-	return monthDiff, dayDiff, yearDiff
-
+func CalculationSince(date time.Time) (int, int, int) {
+	return Calculation(time.Now().UTC(), date)
 }
 
-func HandleInput(s, sep string) []string {
-	repeat := true
-	var final []string
+func Calculation(today, birthday time.Time) (int, int, int) {
+	fmt.Println("Todays date:", today)
+	fmt.Println("Parsed date:", birthday)
 
-	for repeat == true {
-		final = strings.Split(s, sep)
-		if len(final) == 1 {
-			fmt.Printf("Input incorrect! Please use %s as the seperators. \n", sep)
-			fmt.Scanln(&s)
-		} else {
-			repeat = false
-		}
+	if today.Location() != birthday.Location() {
+		birthday = birthday.In(today.Location())
 	}
-	return final
+
+	y1, M1, d1 := birthday.Date()
+	y2, M2, d2 := today.Date()
+
+	year := int(y2 - y1)
+	month := int(M2 - M1)
+	day := int(d2 - d1)
+
+	// Normalize negative values
+	if day < 0 {
+		// days in month:
+		t := time.Date(y1, M1, 32, 0, 0, 0, 0, time.UTC)
+		day += 32 - t.Day()
+		month--
+	}
+
+    if month < 0 {
+        month += 12
+        year--
+    }
+
+	return year, month, day
 }

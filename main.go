@@ -3,28 +3,25 @@ package main
 import (
 	"fmt"
 	"USF62-Pipeline/calculate"
-	"strconv"
-	"time"
+	"USF62-Pipeline/util"
 )
 
 func main() {
 	fmt.Println("enter date of birth (MM/DD/YYYY): ")
-	todayDate := time.Now().Format("01/02/2006")
 	var birthDate string
-	fmt.Scanln(&birthDate)
+	for true {
+		fmt.Scanln(&birthDate)
+		if err := util.VerifyInput(birthDate); err == nil {
+			break
+		}
+	}
 
-	test := calculate.HandleInput(todayDate, "/")
-	month, _ := strconv.Atoi(test[0])
-	day, _ := strconv.Atoi(test[1])
-	year, _ := strconv.Atoi(test[2])
+	date, err := util.GetDate(birthDate)
+	if err != nil {
+		fmt.Println("Error getting date:", err)
+	}
 
-	test = calculate.HandleInput(birthDate, "/")
-	monthBirth, _ := strconv.Atoi(test[0])
-	dayBirth, _ := strconv.Atoi(test[1])
-	yearBirth, _ := strconv.Atoi(test[2])
-
-	monthDiff, dayDiff, yearDiff := calculate.Calculation(month, day, year, monthBirth, dayBirth, yearBirth)
+	yearDiff, monthDiff, dayDiff := calculate.CalculationSince(date)
 
 	fmt.Printf("You are %d years, %d months, %d days old.", yearDiff, monthDiff, dayDiff)
-
 }
