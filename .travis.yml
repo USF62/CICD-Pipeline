@@ -1,6 +1,6 @@
 language: go
 go:
- - 1.17.*
+ - 1.17.8
 
- script
- - go test -v
+script:
+ - go test USF62-Pipeline
