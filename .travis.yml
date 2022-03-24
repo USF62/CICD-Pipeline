@@ -3,4 +3,4 @@ go:
  - 1.17.8
 
 script:
- - go test USF62-Pipeline
+ - go test -v USF62-Pipeline
