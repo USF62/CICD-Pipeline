@@ -26,7 +26,7 @@ func getLocalTime() time.Time {
 	return now
 }
 
-func splitBday(bDay string) time.Time {
+func SplitBday(bDay string) time.Time {
 	splitBirthDay := strings.Split(bDay, "/")
 	month, error := strconv.Atoi(splitBirthDay[0])
 	CheckError(error)

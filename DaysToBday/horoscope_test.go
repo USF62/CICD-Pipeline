@@ -3,7 +3,7 @@ package DaysToBday
 import "testing"
 
 func TestHoroscope(t *testing.T) {
-	if getHoroscope(1, 19) != "Capricorn" {
+	if GetHoroscope(1, 19) != "Capricorn" {
 		t.Errorf("Expected Capricorn")
 	}
 }
@@ -42,14 +42,14 @@ func TestTableHoroscope(t *testing.T) {
 		{25, 2, 29, "Pisces"},
 	}
 	for _, test := range tests {
-		if output := getHoroscope(test.inputMonth, test.inputDay); output != test.expected {
+		if output := GetHoroscope(test.inputMonth, test.inputDay); output != test.expected {
 			t.Errorf("Test Failed: %d, Expected: %q, Received: %q", test.inputID, test.expected, output)
 		}
 	}
 }
 
 func TestZodiac(t *testing.T) {
-	if getZodiac(2, 3, 2000) != "Rabbit" {
+	if GetZodiac(2, 3, 2000) != "Rabbit" {
 		t.Errorf("Expected Rabbit")
 	}
 }
@@ -90,7 +90,7 @@ func TestTableZodiac(t *testing.T) {
 		{26, 2, 4, 2012, "Dragon"},
 	}
 	for _, test := range tests {
-		if output := getZodiac(test.inputMonth, test.inputDay, test.inputYear); output != test.expected {
+		if output := GetZodiac(test.inputMonth, test.inputDay, test.inputYear); output != test.expected {
 			t.Errorf("Test Failed: %d, Expected: %q, Received: %q", test.inputID, test.expected, output)
 		}
 	}

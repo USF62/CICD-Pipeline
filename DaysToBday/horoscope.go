@@ -8,7 +8,7 @@ var zodiac = []string{"Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox",
 
 /* Returns horoscope sign based on the given birthday.
  * Assumes given inputs are positive. */
-func getHoroscope(month int, day int) string {
+func GetHoroscope(month int, day int) string {
 	if (month == 1 || month == 4) && day <= 19 ||
 		(month == 2 && day <= 18) ||
 		(month == 3 || month == 5 || month == 6) && day <= 20 ||
@@ -30,7 +30,7 @@ func isPrevZodiac(month int, day int) bool {
 
 /* Returns zodiac sign based on the given birthdate.
  * Assumes given inputs are positive. */
-func getZodiac(month int, day int, year int) string {
+func GetZodiac(month int, day int, year int) string {
 	year = year % 12
 	if isPrevZodiac(month, day) {
 		if year == 0 {
