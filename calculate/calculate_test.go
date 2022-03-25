@@ -13,7 +13,7 @@ func TestCalc(t *testing.T) {
 	day := 19
 	year := 2022
 
-	monthTest, dayTest, yearTest := calculation(month, day, year, monthBirth, dayBirth, yearBirth)
+	monthTest, dayTest, yearTest := Calculation(month, day, year, monthBirth, dayBirth, yearBirth)
 
 	if monthTest == 6 && dayTest == 9 && yearTest == 22 {
 		return
