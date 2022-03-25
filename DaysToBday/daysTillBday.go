@@ -13,7 +13,7 @@ func getDaysToBday(yearBD int, birthDate time.Time, now time.Time) int {
 	return int(daysToBD)
 }
 
-func calculateDaysToBday(birthDate time.Time) int {
+func CalculateDaysToBday(birthDate time.Time) int {
 	now := getLocalTime()
 	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {
 		if birthDate.Day() == now.Day() {
