@@ -15,7 +15,7 @@ func TestCalc(t *testing.T) {
 
 	monthTest, dayTest, yearTest := Calculation(month, day, year, monthBirth, dayBirth, yearBirth)
 
-	if monthTest == 6 && dayTest == 9 && yearTest == 22 {
+	if monthTest == 5 && dayTest == 32 && yearTest == 21 {
 		return
 	} else {
 		t.Fatal("Error! Calculated return and actual does not match up!")
