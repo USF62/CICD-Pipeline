@@ -1,5 +1,49 @@
-<h1>{{.Title}}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p>[<a href="edit/{{.Title}}">edit</a>]</p>
+    <title>Age calculator</title>
 
-<div>{{printf "%s" .Body}}</div>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>
+                    Age calculator
+                </h1>
+            </div>
+            <p class="lead">
+                Get more precise about your birthday
+            </p>
+
+            <h2>
+                Enter your birthday
+            </h2>
+
+            <form >
+                Your birthday:<br>
+                <label>
+                    <input type="text" name="Date" value="MM/DD/YYYY">
+                </label>
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+
+            <body>
+            <p>Day to your birthday: {{.Dayto}}!</p>
+            <p>Age: {{.Age}}!</p>
+            <p>Horoscope: {{.Horoscope}}!</p>
+            <p>Leap Year: {{.LeapYear}}!</p>
+            </body>
+        </div>
+    </div>
+</div>
+</body>
+</html>
