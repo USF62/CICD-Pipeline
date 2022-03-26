@@ -37,5 +37,5 @@ func TestUpcomingBirthdayNextYear(t *testing.T) {
 func TestBirthdayToday(t *testing.T) {
 	today := getDateFromTime(0)
 	result := calculateDaysToBday(today)
-	assertEqual(t, result, 0, "The outputted result does not match the expected result.")
+	assertEqual(t, result, 1, "The outputted result does not match the expected result.")
 }
