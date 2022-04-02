@@ -19,22 +19,34 @@
                 </h1>
             </div>
             <p class="lead">
-                Get more precise about your birthday
+                Want to learn more about your birthdate?
+                <ul>
+                    <li>current age in years, months, and days</li>
+                    <li>how many days left until your birthday</li>
+                    <li>were you born on a leap year?</li>
+                    <li>your horoscope and zodiac sign</li>
+                </ul>
             </p>
 
             <h2>
                 Enter your birthday
             </h2>
 
-            <form action="save/" method="POST">
-                Your birthday:<br>
+            <form method="POST">
+                Please insert your birthdate:<br>
                 <label>
-                    <input type="text" name="Date" value="MM/DD/YYYY">
+                    <input type="date" name="birthdate" data-date-inline-picker="true">
                 </label>
                 <br>
                 <br>
-                <input type="submit" value="Save">
+                <div>
+                    <button type="submit">Give me my results!</button>
+                </div>
             </form>
+            <div>
+                <p>test: {{ .birthdate }}</p>
+
+            </div>
         </div>
     </div>
 </div>
