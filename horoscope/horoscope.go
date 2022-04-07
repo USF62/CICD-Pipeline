@@ -1,4 +1,4 @@
-package DaysToBday
+package horoscope
 
 var horoscope = []string{"Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini",
 	"Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"}

@@ -1,4 +1,4 @@
-package DaysToBday
+package horoscope
 
 import "testing"
 

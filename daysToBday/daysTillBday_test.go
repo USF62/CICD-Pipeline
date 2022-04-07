@@ -1,13 +1,14 @@
-package DaysToBday
+package daysToBday
 
 import (
 	"fmt"
+	"github.com/venkatrajm815/USF62-Pipeline/util"
 	"testing"
 	"time"
 )
 
 func getDateFromTime(days int) time.Time {
-	now := GetLocalTime()
+	now := util.GetLocalTime()
 	date := now.AddDate(0, 0, days)
 	return date
 }

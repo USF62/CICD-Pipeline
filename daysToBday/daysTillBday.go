@@ -1,20 +1,21 @@
-package DaysToBday
+package daysToBday
 
 import (
 	"fmt"
+	"github.com/venkatrajm815/USF62-Pipeline/util"
 	"math"
 	"time"
 )
 
 func getDaysToBday(yearBD int, birthDate time.Time, now time.Time) int {
-	nextBD := formatDate(yearBD, int(birthDate.Month()), int(birthDate.Day()))
+	nextBD := util.FormatDate(yearBD, int(birthDate.Month()), int(birthDate.Day()))
 	daysToBD := math.Ceil(nextBD.Sub(now).Hours() / 24)
 	fmt.Printf("You have around %.0f days until your birthday.\n", daysToBD)
 	return int(daysToBD)
 }
 
 func CalculateDaysToBday(birthDate time.Time) int {
-	now := getLocalTime()
+	now := util.GetLocalTime()
 	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {
 		if birthDate.Day() == now.Day() {
 			fmt.Println("Today is your birthday. Happy Birthday!")
