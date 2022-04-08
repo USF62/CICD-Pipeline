@@ -7,6 +7,7 @@ import (
 	"github.com/venkatrajm815/USF62-Pipeline/horoscope"
 	"github.com/venkatrajm815/USF62-Pipeline/leapYear"
 	_ "github.com/venkatrajm815/USF62-Pipeline/leapYear"
+	"github.com/venkatrajm815/USF62-Pipeline/util"
 	"strconv"
 	"time"
 )
@@ -52,7 +53,8 @@ func main() {
 			case "1":
 				var rm, rd, ry int
 				month, day, year = ScanInputDate()
-				rm, rd, ry = calculate.Calculation(month, day, year)
+				rm, rd, ry = calculate.Calculation(time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC),
+					util.GetLocalTime())
 				fmt.Println("You are " + strconv.Itoa(ry) + " years " + strconv.Itoa(rm) + " months " + strconv.Itoa(rd) + " days old now.")
 			case "2":
 				month, day, year = ScanInputDate()
@@ -79,7 +81,8 @@ func main() {
 			case "5":
 				var rm, rd, ry int
 				month, day, year = ScanInputDate()
-				rm, rd, ry = calculate.Calculation(month, day, year)
+				rm, rd, ry = calculate.Calculation(time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC),
+					util.GetLocalTime())
 				fmt.Println("You are " + strconv.Itoa(ry) + " years " + strconv.Itoa(rm) + " months " + strconv.Itoa(rd) + " days old now.")
 				daysToBday.CalculateDaysToBday(time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC))
 				if leapYear.IsLeapYear(year) {

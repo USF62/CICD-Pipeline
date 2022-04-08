@@ -1,24 +1,22 @@
 package calculate
 
 import (
-	"github.com/venkatrajm815/USF62-Pipeline/util"
 	"time"
 )
 
-func Calculation(monthBirth, dayBirth, yearBirth int) (int, int, int) {
-	currentdate := util.GetLocalTime()
-	var month time.Month
-	var day, year int
-	year, month, day = currentdate.Date()
-	yearDiff := year - yearBirth
+func Calculation(startDay time.Time, endDay time.Time) (int, int, int) {
+	year := endDay.Year()
+	month := int(endDay.Month())
+	day := endDay.Day()
+	yearDiff := year - startDay.Year()
 
-	monthDiff := int(month) - monthBirth
+	monthDiff := month - int(startDay.Month())
 	if monthDiff < 0 {
 		monthDiff += 12
 		yearDiff--
 	}
 
-	dayDiff := day - dayBirth
+	dayDiff := day - startDay.Day()
 	if dayDiff < 0 {
 		dayDiff += 32 - dayDiff
 		monthDiff--
