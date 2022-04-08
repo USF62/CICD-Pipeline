@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'></script>
 
     <title>Age calculator</title>
 
@@ -40,15 +41,31 @@
                 <br>
                 <br>
                 <div>
-                    <button type="submit">Give me my results!</button>
+                    <button id="submit_btn" type="submit">Give me my results!</button>
                 </div>
             </form>
             <div>
-                <p>test: {{ .birthdate }}</p>
-
+                <p id="result">test: </p>
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('#submit_btn').click(function () {
+            $.ajax({
+                url: 'receive',
+                type: 'post',
+                dataType: 'html',
+                data : { ajax_post_data: 'hello'},
+                success : function(data) {
+                    alert('received your information');
+                    $('#result').html(data);
+                },
+            });
+        });
+    });
+</script>
