@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -31,11 +32,12 @@ func Start() {
 	r.HandleFunc("/", resultsHandler).Methods("POST")
 	http.Handle("/", r)
 
-	err := http.ListenAndServe(":8080", nil)
+	var port = os.Getenv("PORT")
+	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		fmt.Print(err)
 	}
-	log.Fatal(http.ListenAndServe("localhost:8080", r))
+	log.Fatal(http.ListenAndServe(":"+port, r))
 }
 
 // GET handler
@@ -66,8 +68,6 @@ func resultsHandler(w http.ResponseWriter, r *http.Request) {
 		Day:   userDay,
 		Year:  userYear,
 	}
-
 	w.Write([]byte(userBD[0]))
 	fmt.Print(birthdate)
-	http.Redirect(w, r, "/", 302)
 }
