@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      - image: circleci/golang:1.14.6
+      - image: cimg/go:1.14.6
     steps:
       - checkout
       - restore_cache:
@@ -19,4 +19,6 @@ jobs:
       - run:
           name: Run tests
           command: go test ./...
+      - store_test_results:
+          path: test-results
           
