@@ -27,7 +27,6 @@ var userBD = Birthdate{}
 
 func Start() {
 	templates = template.Must(template.ParseFiles("webapp/templates/home.html", "webapp/templates/results.html"))
-
 	r := mux.NewRouter()
 	r.HandleFunc("/", homeHandler).Methods("GET")
 	r.HandleFunc("/", resultsHandler).Methods("POST")
