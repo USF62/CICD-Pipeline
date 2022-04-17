@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-func Calculation(startDay time.Time, endDay time.Time) (int, int, int) {
+func TotalAge(startDay time.Time, endDay time.Time) (int, int, int) {
 	year := endDay.Year()
 	month := int(endDay.Month())
 	day := endDay.Day()
@@ -23,5 +23,4 @@ func Calculation(startDay time.Time, endDay time.Time) (int, int, int) {
 	}
 
 	return monthDiff, dayDiff, yearDiff
-
 }
