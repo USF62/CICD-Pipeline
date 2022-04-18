@@ -14,3 +14,8 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
+  
+deploy:
+   provider: heroku
+   api_key:
+      secure: "2582e8ff-a1c6-4dd9-8f43-b308936642ca"
