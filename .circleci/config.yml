@@ -29,7 +29,5 @@ jobs:
 workflows:
     example-workflow:
       jobs:
-        - heroku/deploy-via-git: 
-            api-key: api_key 
-            app-name: app_name
+        - heroku/deploy-via-git
           
