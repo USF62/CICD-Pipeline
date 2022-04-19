@@ -25,9 +25,3 @@ jobs:
           command: go test ./...
       - store_test_results:
           path: test-results
-
-workflows:
-    example-workflow:
-      jobs:
-        - heroku/deploy-via-git
-          
