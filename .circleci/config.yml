@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  heroku: circleci/heroku@1.2.6
+
 jobs:
   build:
     working_directory: ~/repo
@@ -21,4 +25,11 @@ jobs:
           command: go test ./...
       - store_test_results:
           path: test-results
+
+workflows:
+    example-workflow:
+      jobs:
+        - heroku/deploy-via-git: 
+            app-name: $HEROKU_APP_NAME 
+            api-key: HEROKU_API_KEY 
           
