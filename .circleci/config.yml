@@ -30,5 +30,6 @@ workflows:
     example-workflow:
       jobs:
         - heroku/deploy-via-git: 
-            app-name: $HEROKU_APP_NAME 
+            api-key: api_key 
+            app-name: app_name
           
