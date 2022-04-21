@@ -30,3 +30,18 @@ func CalculateDaysToBday(birthDate time.Time) int {
 	}
 	return 0
 }
+
+func CalculateDaysToBdayStr(birthDate time.Time) string {
+	now := util.GetLocalTime()
+	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {
+		if birthDate.Day() == now.Day() {
+			return "Today is your birthday. Happy Birthday!"
+		}
+		return fmt.Sprintf("Your birthday this year is %d day(s) away", getDaysToBday(now.Year(), birthDate, now))
+	} else if (birthDate.Month() == now.Month() && birthDate.Day() < now.Day()) || (birthDate.Month() < now.Month()) {
+		fmt.Println("Your next birthday is next year!")
+		yearBD := int(now.Year()) + 1
+		return fmt.Sprintf("Your birthday next year is %d day(s) away!", getDaysToBday(yearBD, birthDate, now))
+	}
+	return ""
+}

@@ -1,6 +1,8 @@
 package horoscope
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestHoroscope(t *testing.T) {
 	if GetHoroscope(1, 19) != "Capricorn" {
