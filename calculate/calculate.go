@@ -7,7 +7,7 @@ import (
 
 func Calculation(month, day, year, monthBirth, dayBirth, yearBirth int) (int, int, int) {
 	yearDiff := year - yearBirth
-
+//change
 	monthDiff := month - monthBirth
 	if monthDiff < 0 {
 		monthDiff += 12
