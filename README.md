@@ -1,3 +1,3 @@
 # USF62-Pipeline
 
-test
+test-github
