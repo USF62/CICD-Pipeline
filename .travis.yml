@@ -14,3 +14,8 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
+  
+deploy:
+  provider: heroku
+  # ⋮
+  app: usf62-cicd-pipeline
