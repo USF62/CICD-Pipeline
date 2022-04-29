@@ -18,6 +18,6 @@ after_failure:
 deploy:
   provider: heroku
   api_key:
-    secure: API_KEY
+    secure: $API_KEY
   app:
     main: usf62-cicd-pipeline
