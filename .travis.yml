@@ -19,5 +19,6 @@ deploy:
   provider: heroku
   api_key:
     secure: $API_KEY
-  app:
-    main: usf62-cicd-pipeline
+  app: usf62-cicd-pipeline
+  on:
+    repo: USF62/CICD-Pipeline
