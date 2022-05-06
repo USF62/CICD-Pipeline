@@ -3,5 +3,6 @@
 
 This project will address the “behind-the-scenes” for most app development processes in companies along with popular technologies used in the industry that students do not usually learn about early in their career. The benefits of this project will provide an understanding and exposure for early industry professionals and non-technical professionals about app development from implementation to deployment infrastructure.
 
+
 ## Our Pipeline
 ![image](https://user-images.githubusercontent.com/42750062/158910311-8630ea3d-34cd-4350-bf93-266f7f3dabca.png)
