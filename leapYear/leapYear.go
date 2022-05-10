@@ -1,7 +1,7 @@
 package leapYear
 
 import (
-	"github.com/venkatrajm815/USF62-Pipeline/util"
+	"github.com/USF62/CICD-Pipeline/util"
 )
 
 func IsLeapYear(year int) bool {
