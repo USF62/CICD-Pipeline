@@ -2,12 +2,12 @@ package webapp
 
 import (
 	"fmt"
+	"github.com/USF62/CICD-Pipeline/calculate"
+	"github.com/USF62/CICD-Pipeline/daysToBday"
+	"github.com/USF62/CICD-Pipeline/horoscope"
+	"github.com/USF62/CICD-Pipeline/leapYear"
+	"github.com/USF62/CICD-Pipeline/util"
 	"github.com/gorilla/mux"
-	"github.com/venkatrajm815/USF62-Pipeline/calculate"
-	"github.com/venkatrajm815/USF62-Pipeline/daysToBday"
-	"github.com/venkatrajm815/USF62-Pipeline/horoscope"
-	"github.com/venkatrajm815/USF62-Pipeline/leapYear"
-	"github.com/venkatrajm815/USF62-Pipeline/util"
 	"html/template"
 	"log"
 	"net/http"
