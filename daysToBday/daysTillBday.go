@@ -2,11 +2,14 @@ package daysToBday
 
 import (
 	"fmt"
-	"github.com/venkatrajm815/USF62-Pipeline/util"
+	"github.com/USF62/CICD-Pipeline/util"
 	"math"
 	"time"
 )
 
+/*
+	Calculates the days to birthday from the current date and time
+*/
 func getDaysToBday(yearBD int, birthDate time.Time, now time.Time) int {
 	nextBD := util.FormatDate(yearBD, int(birthDate.Month()), int(birthDate.Day()))
 	daysToBD := math.Ceil(nextBD.Sub(now).Hours() / 24)
@@ -14,6 +17,9 @@ func getDaysToBday(yearBD int, birthDate time.Time, now time.Time) int {
 	return int(daysToBD)
 }
 
+/*
+	Finds the number of days to Birthday based on if birthday has passed in the current year (Used for Testing)
+*/
 func CalculateDaysToBday(birthDate time.Time) int {
 	now := util.GetLocalTime()
 	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {
@@ -31,6 +37,9 @@ func CalculateDaysToBday(birthDate time.Time) int {
 	return 0
 }
 
+/*
+	Finds the number of days to Birthday based on if birthday has passed in the current year  (Used for Web Application)
+*/
 func CalculateDaysToBdayStr(birthDate time.Time) string {
 	now := util.GetLocalTime()
 	if (birthDate.Month() == now.Month() && birthDate.Day() >= now.Day()) || (birthDate.Month() > now.Month()) {

@@ -2,7 +2,7 @@ package daysToBday
 
 import (
 	"fmt"
-	"github.com/venkatrajm815/USF62-Pipeline/util"
+	"github.com/USF62/CICD-Pipeline/util"
 	"testing"
 	"time"
 )

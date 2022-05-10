@@ -1,4 +1,4 @@
-module github.com/venkatrajm815/USF62-Pipeline
+module github.com/USF62/CICD-Pipeline
 
 go 1.17
 
