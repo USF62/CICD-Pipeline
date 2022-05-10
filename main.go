@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/venkatrajm815/USF62-Pipeline/webapp"
+	"github.com/USF62/CICD-Pipeline/webapp"
 )
 
 func main() {
