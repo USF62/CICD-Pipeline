@@ -25,8 +25,9 @@ type Birthdate struct {
 var templates *template.Template
 var userBD = Birthdate{}
 
+// Start reads necessary HTML files and sets up router and port
 func Start() {
-	templates = template.Must(template.ParseFiles("webapp/templates/home.html", "webapp/templates/results.html"))
+	templates = template.Must(template.ParseFiles("webapp/templates/home.html"))
 	r := mux.NewRouter()
 	r.HandleFunc("/", homeHandler).Methods("GET")
 	r.HandleFunc("/", resultsHandler).Methods("POST")
@@ -40,7 +41,7 @@ func Start() {
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }
 
-// GET handler
+// homeHandler loads home HTML file
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	err := templates.ExecuteTemplate(w, "home.html", nil)
 	if err != nil {
@@ -48,7 +49,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// POST handler
+// resultsHandler parses user input and rewrites web page with results
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		return
@@ -64,6 +65,7 @@ func resultsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(results))
 }
 
+// initBirthdate parses birthdate into separate variables
 func initBirthDate(birthdate []string) {
 	userBD.Year, _ = strconv.Atoi(birthdate[0])
 	userBD.Month, _ = strconv.Atoi(birthdate[1])
@@ -71,6 +73,8 @@ func initBirthDate(birthdate []string) {
 	userBD.Birthdate = util.FormatDate(userBD.Year, userBD.Month, userBD.Day)
 }
 
+// writeResults writes and returns a results string of
+// total age, days until birthday,horoscope/zodiac sign, and leap year validity
 func writeResults() string {
 	builder := strings.Builder{}
 	month, day, year := calculate.TotalAge(userBD.Birthdate, time.Now())
